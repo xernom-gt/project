@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use League\CommonMark\Reference\Reference;
 
 return new class extends Migration
 {
@@ -12,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('addons', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->text('description');
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('menu_id')->constrained();
+
+            $table->string('name');
             $table->integer('price');
-            $table->enum('status',['avaible','unavaible'])->default('avaible');
+            $table->enum('status',['available','unavailable']);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists('addons');
     }
 };
