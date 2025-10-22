@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('addons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('menu_id')->constrained();
-
             $table->string('name');
             $table->integer('price');
             $table->enum('status',['available','unavailable']);
