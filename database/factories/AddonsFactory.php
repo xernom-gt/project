@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Menu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,11 @@ class AddonsFactory extends Factory
      */
     public function definition(): array
     {
+        $menu = Menu::inRandomOrder()->first();
         return [
-            //
+            "menu_id" => $menu->id,
+            "name" => fake()->text(10),
+            "price" => fake()->numberBetween(0, 10000),
         ];
     }
 }

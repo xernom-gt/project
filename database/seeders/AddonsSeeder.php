@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Addons;
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,6 +14,6 @@ class AddonsSeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory()->count(50)->create();
+        Addons::factory()->count(15)->create();
     }
 }

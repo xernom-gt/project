@@ -5,20 +5,24 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use League\CommonMark\Reference\Reference;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create("menus", function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->text('description');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->integer('price');
-            $table->enum('status',['avaible','unavaible'])->default('avaible');
+            $table->string("name", 100);
+            $table->text("description");
+            $table
+                ->foreignId("category_id")
+                ->constrained()
+                ->onDelete("cascade");
+            $table->integer("price");
+            $table
+                ->enum("status", ["avaible", "unavaible"])
+                ->default("avaible");
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists("menu");
     }
 };
